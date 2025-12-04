@@ -82,24 +82,5 @@ mod tests {
     fn test_part_two() {
         let result = part_two(&advent_of_code::template::read_file("examples", DAY));
         assert_eq!(result, Some(6));
-
-        let start = 50;
-        let mut current = start;
-        let mut solution = 0;
-        let line = "L150";
-        let dir = (line.starts_with("R")) as i32 - (line.starts_with("L")) as i32;
-        let delta = dir * line[1..].parse::<i32>().unwrap();
-        let next_not_wrapped = current + delta;
-        let next_wrapped = next_not_wrapped.rem_euclid(100);
-        let num_wraps = ((next_not_wrapped - next_wrapped) / 100).abs();
-        solution += num_wraps;
-        if next_wrapped == 0 {
-            solution += 1;
-        }
-        println!(
-            "{} -> {} ({})    Wraps: {}",
-            current, next_not_wrapped, next_wrapped, num_wraps
-        );
-        current = next_wrapped;
     }
 }
