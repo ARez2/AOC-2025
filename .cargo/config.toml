@@ -10,3 +10,6 @@ time = "run --quiet --release -- time"
 
 [env]
 AOC_YEAR = "2025"
+
+[target.'cfg(target_os = "linux")']
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
